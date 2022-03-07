@@ -1,0 +1,8 @@
+body {
+  font-family: Verdana;  
+}
+
+/* Carte */
+#carte {
+  height: calc(100vh - 80px) !important;
+}
