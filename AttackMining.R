@@ -11,8 +11,9 @@
 rm(list=ls())
 
 # Fonction de verification pour installation des packages
-packages = c("leaflet", "shinydashboard", "shinycssloaders", "shiny", "shinyWidgets", "DT", "leaflet.extras")
+packages = c("leaflet", "shinydashboard", "shinycssloaders", "shiny", "shinyWidgets", "DT", "leaflet.extras", "readr")
 
+#Check des packages
 package.check <- lapply(
   packages,
   FUN = function(x) {
@@ -39,7 +40,7 @@ ui <- shinyUI(fluidPage(
     
     dashboardSidebar(width = 300,
                      sidebarMenu(
-                       menuItem("Tableau récapitulatif", tabName = "tableau", icon = icon("table")),
+                       menuItem("Importation des données", tabName = "tableau", icon = icon("table")),
                        menuItem("Carte des IP", tabName = "carte", icon = icon("map-marked-alt")),
                        menuItem("Analyse", tabName = "analyse", icon = icon("file")),
                        HTML(paste0(
@@ -60,6 +61,13 @@ ui <- shinyUI(fluidPage(
     
     dashboardBody(
       tabItems(
+        tabItem(tabName = "tableau",
+                h1("Importation des données"),
+                fileInput("dataFile",label = NULL,  buttonLabel = "Browse...", placeholder = "No file selected"),
+                h2("Aperçu des données"),
+                DT::dataTableOutput("apercu_data")
+        ),
+        
         tabItem(tabName = "carte",
           addSpinner(leafletOutput("carte"), spin = "circle", color = "black")
         )
@@ -70,6 +78,24 @@ ui <- shinyUI(fluidPage(
 
 # Partie serveur
 server <- shinyServer(function(input, output, session) {
+  
+  #Affichage des donnees
+  df_secu <- reactive({
+    if (is.null(input$dataFile))
+      return(NULL)
+    df <- read.csv(input$dataFile$datapath, sep=";")
+    return(df)
+  })
+  
+  output$apercu_data <-  DT::renderDataTable({
+    if (is.null(input$dataFile))
+      return(NULL)
+    df <- df_secu()
+    DT::datatable(df, filter = "top") %>% formatStyle(
+      'action',
+      backgroundColor = styleEqual(c("Permit", "Deny"), c("#85C17E", "#DE2916"))
+    )
+  })
   
   latitude = c(45.5, 47.5)
   longitude = c(7.5, 7.8)
