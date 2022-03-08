@@ -1,4 +1,4 @@
-# Projet Analyse de données de sécurité - Master 2 SISE / OPSIE
+# Challenge sur 2 jours - Analyse de données de sécurité - Master 2 SISE / OPSIE
 
 * Frintz Elisa 
 * Madi Corodji Jacky
