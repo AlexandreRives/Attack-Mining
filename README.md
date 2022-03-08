@@ -1,10 +1,10 @@
-# Challenge sur 2 jours - Analyse de données de sécurité - Master 2 SISE / OPSIE
+# Challenge sur 2 jours - Analyse de données de sécurité 
 
-* Frintz Elisa 
-* Madi Corodji Jacky
-* Rives Alexandre
-* Thomasson Quentin
-* Ourdouillie Baptiste
+* Frintz Elisa (Master 2 SISE)
+* Madi Corodji Jacky (Master 2 SISE)
+* Rives Alexandre (Master 2 SISE)
+* Thomasson Quentin (Master 2 OPSIE)
+* Ourdouillie Baptiste (Master 2 OPSIE)
 
 ## Lien vers notre application :
 https://attackmining.herokuapp.com/
