@@ -1,6 +1,3 @@
-# Attack-Mining
-Projet Analyse de données de sécurité - Master 2 SISE / Master 2 OPSIE
-
 # Projet Analyse de données de sécurité - Master 2 SISE / OPSIE
 
 * Frintz Elisa 
@@ -11,3 +8,5 @@ Projet Analyse de données de sécurité - Master 2 SISE / Master 2 OPSIE
 
 ## Lien vers notre application :
 https://attackmining.herokuapp.com/
+
+
